@@ -1,79 +1,109 @@
-import React from 'react';
-import {
-  Box,
-  Container,
-  Typography,
-  Card,
-  CardContent,
-  Button,
-} from '@mui/material';
-import Grid from '@mui/material/Grid';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Box, Typography, useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+
+const circleStyle = (bgColor: string, textColor: string, size: number) => ({
+  width: size,
+  height: size,
+  borderRadius: "50%",
+  backgroundColor: bgColor,
+  color: textColor,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontSize: size * 0.6,
+  fontWeight: "bold",
+  fontFamily: "'Comfortaa', sans-serif",
+  margin: 0,
+  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+  transition: "transform 0.3s ease, opacity 0.3s ease"
+});
 
 export default function Home() {
+  const [showText, setShowText] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const size = isMobile ? 100 : 120;
+
+  const handleHover = () => setShowText(true);
+  const handleLeave = () => setShowText(false);
+
+  const CircleRow = ({ letters, bgColors, textColors }: { letters: string[], bgColors: string[], textColors: string[] }) => (
+    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+      {letters.map((char, idx) => (
+        <Box key={char} sx={circleStyle(bgColors[idx], textColors[idx], size)}>{char}</Box>
+      ))}
+    </Box>
+  );
+
   return (
-    <Box sx={{ bgcolor: '#e0f2f1', minHeight: '100vh', py: 6 }}>
-      <Container maxWidth="md" sx={{ textAlign: 'center' }}>
-        <img
-          src="/logo_uberli_green_300w.png"
-          alt="uberli logo"
-          style={{ width: '120px', marginBottom: '24px' }}
+    <Box
+      sx={{
+        minHeight: "100vh",
+        bgcolor: "#E4BBEF",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column"
+      }}
+    >
+      <Box
+        onMouseEnter={handleHover}
+        onMouseLeave={handleLeave}
+        onTouchStart={handleHover}
+        sx={{ cursor: "pointer", transition: "transform 0.5s ease", position: "relative" }}
+      >
+        {/* Zwei kleine Hintergrundkreise in den Zwischenräumen */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: size * 0.5,
+            left: `calc(50% - ${size}px)`,
+            width: size,
+            height: size,
+            borderRadius: "50%",
+            backgroundColor: "#B84AE7",
+            zIndex: 0
+          }}
         />
-        <Typography variant="h3" gutterBottom>
-          uberli.ch
-        </Typography>
-        <Typography variant="h6" gutterBottom>
-          IT-Beratung für Bildung – Cloud, AI, EdTech & Sicherheit
-        </Typography>
+        <Box
+          sx={{
+            position: "absolute",
+            top: size * 0.5,
+            left: `calc(50%)`,
+            width: size,
+            height: size,
+            borderRadius: "50%",
+            backgroundColor: "#B84AE7",
+            zIndex: 0
+          }}
+        />
 
-        <Grid container spacing={4} mt={2}>
-          {[
-            {
-              title: 'QR Code Generator',
-              description: 'Erstelle QR Codes für Schule & Events.',
-              to: '/qr',
-            },
-            {
-              title: 'Passwort-Austausch',
-              description: 'Sicherer DSGVO-konformer Passwortversand.',
-              to: '/password-share',
-            },
-            {
-              title: 'Bildungsdaten Analyse',
-              description:
-                'Analysiere CH-Bildungsdaten für fundierte Entscheidungen.',
-              to: '/edu-data',
-            },
-          ].map((tool, index) => (
-            <Grid size={{ xs: 12, md: 4 }} key={index}>
-              <Card elevation={3}>
-                <CardContent>
-                  <Typography variant="h6" gutterBottom>
-                    {tool.title}
-                  </Typography>
-                  <Typography variant="body2" gutterBottom>
-                    {tool.description}
-                  </Typography>
-                  <Button
-                    variant="contained"
-                    component={Link}
-                    to={tool.to}
-                    sx={{ mt: 1 }}
-                  >
-                    Öffnen
-                  </Button>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-
-        <Box mt={6}>
-          <Typography variant="body2" color="text.secondary">
-            Spezialisiert auf: IT Management, Cloud, EdTech, AI, IT Security
-          </Typography>
+        <Box sx={{ position: "relative", zIndex: 1 }}>
+          <CircleRow
+            letters={["u", "b", "e"]}
+            bgColors={["#ffffff", "#6E2E87", "#6E2E87"]}
+            textColors={["#6E2E87", "#ffffff", "#ffffff"]}
+          />
+          <CircleRow
+            letters={["r", "l", "i"]}
+            bgColors={["#6E2E87", "#6E2E87", "#ffffff"]}
+            textColors={["#ffffff", "#ffffff", "#6E2E87"]}
+          />
         </Box>
-      </Container>
+      </Box>
+
+      <Typography
+        mt={4}
+        fontSize={20}
+        textAlign="center"
+        sx={{
+          opacity: showText ? 1 : 0,
+          transition: "opacity 0.5s ease"
+        }}
+      >
+        Willkommen bei uberli.ch – IT-Beratung für Bildung
+      </Typography>
     </Box>
   );
 }
