@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Typography, useMediaQuery } from "@mui/material";
+import { Box, Typography, Button, useMediaQuery, Fade } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
 const circleStyle = (bgColor: string, textColor: string, size: number) => ({
@@ -16,17 +16,16 @@ const circleStyle = (bgColor: string, textColor: string, size: number) => ({
   fontFamily: "'Comfortaa', sans-serif",
   margin: 0,
   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-  transition: "transform 0.3s ease, opacity 0.3s ease"
+  transition: "all 0.6s ease"
 });
 
 export default function Home() {
-  const [showText, setShowText] = useState(false);
+  const [active, setActive] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const size = isMobile ? 100 : 120;
 
-  const handleHover = () => setShowText(true);
-  const handleLeave = () => setShowText(false);
+  const handleActivate = () => setActive(true);
 
   const CircleRow = ({ letters, bgColors, textColors }: { letters: string[], bgColors: string[], textColors: string[] }) => (
     <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
@@ -44,47 +43,91 @@ export default function Home() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        flexDirection: "column"
+        flexDirection: "column",
+        overflow: "hidden",
       }}
     >
       <Box
-        onMouseEnter={handleHover}
-        onMouseLeave={handleLeave}
-        onTouchStart={handleHover}
-        sx={{ cursor: "pointer", transition: "transform 0.5s ease", position: "relative" }}
+        onClick={handleActivate}
+        onMouseEnter={() => !active && setActive(true)}
+        sx={{ cursor: "pointer", position: "relative", display: "flex", flexDirection: "column", alignItems: "center" }}
       >
-        {/* Zwei kleine Hintergrundkreise in den Zwischenräumen */}
+        {/* Hintergrund-Rechteck für obere Reihe */}
         <Box
           sx={{
             position: "absolute",
-            top: size * 0.5,
-            left: `calc(50% - ${size}px)`,
-            width: size,
-            height: size,
-            borderRadius: "50%",
+            top: size/2,
+            left: "50%",
+            transform: active ? `translate(-50%, -20px)` : "translate(-50%, 20px)",
+            transition: "transform 0.6s ease",
+            width: size * 2,
+            height: size * 0.5,
             backgroundColor: "#B84AE7",
-            zIndex: 0
+            zIndex: 0,
+            borderRadius: 0
           }}
         />
         <Box
           sx={{
-            position: "absolute",
-            top: size * 0.5,
-            left: `calc(50%)`,
-            width: size,
-            height: size,
-            borderRadius: "50%",
-            backgroundColor: "#B84AE7",
-            zIndex: 0
+            transform: active ? `translateY(-20px)` : "translateY(20px)",
+            transition: "transform 0.6s ease"
           }}
-        />
-
-        <Box sx={{ position: "relative", zIndex: 1 }}>
+        >
           <CircleRow
             letters={["u", "b", "e"]}
             bgColors={["#ffffff", "#6E2E87", "#6E2E87"]}
             textColors={["#6E2E87", "#ffffff", "#ffffff"]}
           />
+        </Box>
+
+        <Fade in={active} timeout={600}>
+          <Box sx={{ my: 0, display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 2, height: 40  }}>
+            {[
+              { label: "Über uns" },
+              { label: "Projekte" },
+              { label: "Werkzeuge" },
+              { label: "Kontakt" }
+            ].map(({ label }) => (
+              <Button
+                key={label}
+                variant="outlined"
+                sx={{
+                  fontFamily: "'Comfortaa', sans-serif",
+                  color: "#6E2E87",
+                  borderColor: "#6E2E87",
+                  ":hover": {
+                    bgcolor: "#6E2E87",
+                    color: "white"
+                  }
+                }}
+              >
+                {label}
+              </Button>
+            ))}
+          </Box>
+        </Fade>
+        {/* Hintergrund-Rechteck für untere Reihe */}
+        <Box
+          sx={{
+            position: "absolute",
+            bottom: size/2,
+            left: "50%",
+            transform: active ? `translate(-50%, 20px)` : "translate(-50%, -20px)",
+            transition: "transform 0.6s ease",
+            width: size * 2,
+            height: size * 0.5,
+            backgroundColor: "#B84AE7",
+            zIndex: 0,
+            borderRadius: 0
+          }}
+        />
+
+        <Box
+          sx={{
+            transform: active ? `translateY(20px)` : "translateY(-20px)",
+            transition: "transform 0.6s ease"
+          }}
+        >
           <CircleRow
             letters={["r", "l", "i"]}
             bgColors={["#6E2E87", "#6E2E87", "#ffffff"]}
@@ -98,8 +141,9 @@ export default function Home() {
         fontSize={20}
         textAlign="center"
         sx={{
-          opacity: showText ? 1 : 0,
-          transition: "opacity 0.5s ease"
+          opacity: 1,
+          transition: "opacity 0.5s ease",
+          fontFamily: "'Comfortaa', sans-serif"
         }}
       >
         Willkommen bei uberli.ch – IT-Beratung für Bildung
