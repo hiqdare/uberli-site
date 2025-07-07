@@ -21,9 +21,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "serve -s build",
-    "test": "echo \"Tests übersprungen\"",
-    "eject": "react-scripts eject"
+    "start": "serve -s dist",
+    "test": "echo \"no tests\""
   },
   "eslintConfig": {
     "extends": [
