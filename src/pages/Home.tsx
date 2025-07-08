@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Box, Typography, Button, useMediaQuery, Fade } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 
 const circleStyle = (bgColor: string, textColor: string, size: number) => ({
   width: size,
@@ -24,16 +25,29 @@ export default function Home() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const size = isMobile ? 100 : 120;
+  const offsetInactive = isMobile ? 50 : 20;
+  //const offsetActive = isMobile ? 20 : 20;
 
-  const handleActivate = () => setActive(true);
+  const navigate = useNavigate();
+
+  const handleActivate = () => setActive(!active);
 
   const CircleRow = ({ letters, bgColors, textColors }: { letters: string[], bgColors: string[], textColors: string[] }) => (
-    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", position: "relative" }}>
       {letters.map((char, idx) => (
-        <Box key={char} sx={circleStyle(bgColors[idx], textColors[idx], size)}>{char}</Box>
+        <Box key={char} sx={{ position: "relative", display: "flex", justifyContent: "center" }}>
+          <Box sx={{ ...circleStyle(bgColors[idx], textColors[idx], size), position: "relative", zIndex: 1 }}>{char}</Box>
+        </Box>
       ))}
     </Box>
   );
+
+  const menuItems = [
+    { label: "Über uns", path: "/about" },
+    { label: "Projekte", path: "/projects" },
+    { label: "Werkzeuge", path: "/tools" },
+    { label: "Kontakt", path: "/contact" }
+  ];
 
   return (
     <Box
@@ -58,7 +72,7 @@ export default function Home() {
             position: "absolute",
             top: size/2,
             left: "50%",
-            transform: active ? `translate(-50%, -20px)` : "translate(-50%, 20px)",
+            transform: active ? `translate(-50%, -20px)` : `translate(-50%, ${offsetInactive}px)`,
             transition: "transform 0.6s ease",
             width: size * 2,
             height: size * 0.5,
@@ -69,8 +83,9 @@ export default function Home() {
         />
         <Box
           sx={{
-            transform: active ? `translateY(-20px)` : "translateY(20px)",
-            transition: "transform 0.6s ease"
+            transform: active ? `translateY(-20px)` : `translateY(${offsetInactive}px)`,
+            transition: "transform 0.6s ease",
+            zIndex: 1
           }}
         >
           <CircleRow
@@ -81,20 +96,33 @@ export default function Home() {
         </Box>
 
         <Fade in={active} timeout={600}>
-          <Box sx={{ my: 0, display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 2, height: 40  }}>
-            {[
-              { label: "Über uns" },
-              { label: "Projekte" },
-              { label: "Werkzeuge" },
-              { label: "Kontakt" }
-            ].map(({ label }) => (
+          <Box
+            sx={{
+              my: 0,
+              display: "grid",
+              gap: 2,
+              justifyContent: "center",
+              height: {
+                xs: 100,
+                sm: 40
+              },
+              textAlign: "center",
+              gridTemplateColumns: {
+                xs: "repeat(2, auto)", // Mobil: 2x2
+                sm: "repeat(4, auto)"  // Desktop: 1x4
+              }
+            }}
+          >
+            {menuItems.map(({ label, path }) => (
               <Button
                 key={label}
+                onClick={() => navigate(path)}
                 variant="outlined"
                 sx={{
                   fontFamily: "'Comfortaa', sans-serif",
                   color: "#6E2E87",
                   borderColor: "#6E2E87",
+                  px: 3, // gleichmäßiger Button-Inhalt
                   ":hover": {
                     bgcolor: "#6E2E87",
                     color: "white"
@@ -106,13 +134,15 @@ export default function Home() {
             ))}
           </Box>
         </Fade>
+
+
         {/* Hintergrund-Rechteck für untere Reihe */}
         <Box
           sx={{
             position: "absolute",
             bottom: size/2,
             left: "50%",
-            transform: active ? `translate(-50%, 20px)` : "translate(-50%, -20px)",
+            transform: active ? `translate(-50%, 20px)` : `translate(-50%, -${offsetInactive}px)`,
             transition: "transform 0.6s ease",
             width: size * 2,
             height: size * 0.5,
@@ -124,8 +154,9 @@ export default function Home() {
 
         <Box
           sx={{
-            transform: active ? `translateY(20px)` : "translateY(-20px)",
-            transition: "transform 0.6s ease"
+            transform: active ? `translateY(20px)` : `translateY(-${offsetInactive}px)`,
+            transition: "transform 0.6s ease",
+            zIndex: 1
           }}
         >
           <CircleRow
@@ -135,19 +166,6 @@ export default function Home() {
           />
         </Box>
       </Box>
-
-      <Typography
-        mt={4}
-        fontSize={20}
-        textAlign="center"
-        sx={{
-          opacity: 1,
-          transition: "opacity 0.5s ease",
-          fontFamily: "'Comfortaa', sans-serif"
-        }}
-      >
-        Willkommen bei uberli.ch – IT-Beratung für Bildung
-      </Typography>
     </Box>
   );
 }
