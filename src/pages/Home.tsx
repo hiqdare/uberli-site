@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { Box, Typography, Button, useMediaQuery, Fade } from "@mui/material";
+import { useState } from "react";
+import { Box, Grow, Typography, Button, useMediaQuery, Fade } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { useNavigate } from "react-router-dom";
 
 const circleStyle = (bgColor: string, textColor: string, size: number) => ({
   width: size,
@@ -25,12 +24,14 @@ export default function Home() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const size = isMobile ? 100 : 120;
-  const offsetInactive = isMobile ? 50 : 20;
-  //const offsetActive = isMobile ? 20 : 20;
 
-  const navigate = useNavigate();
+  const handleActivate = () => {
+  setActive(true);
+    setTimeout(() => {
+      document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+    }, 1000); // nach Logo-Animation
+  };
 
-  const handleActivate = () => setActive(!active);
 
   const CircleRow = ({ letters, bgColors, textColors }: { letters: string[], bgColors: string[], textColors: string[] }) => (
     <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", position: "relative" }}>
@@ -43,11 +44,12 @@ export default function Home() {
   );
 
   const menuItems = [
-    { label: "Über uns", path: "/about" },
-    { label: "Projekte", path: "/projects" },
-    { label: "Werkzeuge", path: "/tools" },
-    { label: "Kontakt", path: "/contact" }
+    { label: "Über uns", path: "#about" },
+    { label: "Projekte", path: "#projects" },
+    { label: "Werkzeuge", path: "#tools" },
+    { label: "Kontakt", path: "#contact" }
   ];
+
 
   return (
     <Box
@@ -62,18 +64,27 @@ export default function Home() {
       }}
     >
       <Box
-        onClick={handleActivate}
-        onMouseEnter={() => !active && setActive(true)}
-        sx={{ cursor: "pointer", position: "relative", display: "flex", flexDirection: "column", alignItems: "center" }}
+        sx={{
+          cursor: "pointer",
+          position: "relative",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100vh",
+          maxWidth: 800,
+          width: "100%",
+          overflow: "hidden",
+        }}
       >
         {/* Hintergrund-Rechteck für obere Reihe */}
         <Box
           sx={{
             position: "absolute",
-            top: size/2,
+            top: 0,
             left: "50%",
-            transform: active ? `translate(-50%, -20px)` : `translate(-50%, ${offsetInactive}px)`,
-            transition: "transform 0.6s ease",
+            transform: active ? `translate(-50%, calc(${size/2}px))` : `translate(-50%, calc(50vh - ${size}px))`,
+            transition: "transform 0.8s ease",
             width: size * 2,
             height: size * 0.5,
             backgroundColor: "#B84AE7",
@@ -82,9 +93,11 @@ export default function Home() {
           }}
         />
         <Box
+          onClick={handleActivate}
+          onMouseEnter={() => !active && setActive(true)}
           sx={{
-            transform: active ? `translateY(-20px)` : `translateY(${offsetInactive}px)`,
-            transition: "transform 0.6s ease",
+            transform: active ? `translateY(calc(-50vh + ${size}px))` : `translateY(-50%)`,
+            transition: "transform 0.8s ease",
             zIndex: 1
           }}
         >
@@ -94,56 +107,78 @@ export default function Home() {
             textColors={["#6E2E87", "#ffffff", "#ffffff"]}
           />
         </Box>
-
-        <Fade in={active} timeout={600}>
-          <Box
-            sx={{
-              my: 0,
-              display: "grid",
-              gap: 2,
-              justifyContent: "center",
-              height: {
-                xs: 100,
-                sm: 40
-              },
-              textAlign: "center",
-              gridTemplateColumns: {
-                xs: "repeat(2, auto)", // Mobil: 2x2
-                sm: "repeat(4, auto)"  // Desktop: 1x4
-              }
-            }}
-          >
-            {menuItems.map(({ label, path }) => (
-              <Button
-                key={label}
-                onClick={() => navigate(path)}
-                variant="outlined"
-                sx={{
-                  fontFamily: "'Comfortaa', sans-serif",
-                  color: "#6E2E87",
-                  borderColor: "#6E2E87",
-                  px: 3, // gleichmäßiger Button-Inhalt
-                  ":hover": {
-                    bgcolor: "#6E2E87",
-                    color: "white"
-                  }
-                }}
-              >
-                {label}
-              </Button>
-            ))}
-          </Box>
-        </Fade>
-
-
+        <Box
+          sx={{
+            position: "absolute",
+            top: `${size}px`,
+            bottom: `${size}px`,
+            transform: active ? "scaleY(1)" : "scaleY(0)",
+            transformOrigin: "center",
+            transition: "transform 0.8s ease",
+            left: "0",
+            width: "100%",
+            bgcolor: "white",
+            borderRadius: 4,
+            boxShadow: "0 8px 24px rgba(0, 0, 0, 0.2)",
+            zIndex: 5,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            px: 4,
+            py: 3,
+            textAlign: "center",
+            overflowY: "auto"
+          }}
+        >
+          <Typography variant="h5" sx={{ fontFamily: "'Comfortaa', sans-serif", color: "#6E2E87", mb: 2 }}>
+            Willkommen bei überli.ch
+          </Typography>
+          <Typography variant="body1" sx={{ fontFamily: "'Comfortaa', sans-serif", color: "#6E2E87" }}>
+            IT-Beratung für Bildung – mit Freude, Struktur und Wirkung.
+          </Typography>
+          <Fade in={active} timeout={600}>
+            <Box
+              sx={{
+                position: 'fixed',
+                top: 0,
+                width: '100%',
+                bgcolor: '#E4BBEF',
+                display: 'flex',
+                justifyContent: 'center',
+                zIndex: 10,
+                py: 1
+              }}
+            >
+              {menuItems.map(({ label, path }) => (
+                <Button
+                  key={label}
+                  href={path} // ersetzt navigate(path)
+                  variant="text"
+                  sx={{
+                    fontFamily: "'Comfortaa', sans-serif",
+                    color: "#6E2E87",
+                    mx: 1,
+                    ":hover": {
+                      bgcolor: "#6E2E87",
+                      color: "white"
+                    }
+                  }}
+                >
+                  {label}
+                </Button>
+              ))}
+            </Box>
+          </Fade>
+        </Box>
         {/* Hintergrund-Rechteck für untere Reihe */}
         <Box
           sx={{
             position: "absolute",
-            bottom: size/2,
+            top: 0,
             left: "50%",
-            transform: active ? `translate(-50%, 20px)` : `translate(-50%, -${offsetInactive}px)`,
-            transition: "transform 0.6s ease",
+            transform: active ? `translate(-50%, calc(100vh - ${size}px))` : `translate(-50%, calc(50vh - ${size/2}px))`,
+            transition: "transform 0.8s ease",
             width: size * 2,
             height: size * 0.5,
             backgroundColor: "#B84AE7",
@@ -154,8 +189,8 @@ export default function Home() {
 
         <Box
           sx={{
-            transform: active ? `translateY(20px)` : `translateY(-${offsetInactive}px)`,
-            transition: "transform 0.6s ease",
+            transform: active ? `translateY(calc(50vh - ${size}px))` : `translateY(-50%)`,
+            transition: "transform 0.8s ease",
             zIndex: 1
           }}
         >
