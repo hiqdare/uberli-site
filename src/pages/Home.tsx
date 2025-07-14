@@ -1,6 +1,10 @@
-import { useState } from "react";
-import { Box, Grow, Typography, Button, useMediaQuery, Fade } from "@mui/material";
+import { useState, useEffect, useRef } from "react";
+import { Box, Button, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import About from "./About";
+import Contact from "./Contact";
+import Projects from "./Projects";
+import Tools from "./Tools";
 
 const circleStyle = (bgColor: string, textColor: string, size: number) => ({
   width: size,
@@ -21,6 +25,7 @@ const circleStyle = (bgColor: string, textColor: string, size: number) => ({
 
 export default function Home() {
   const [active, setActive] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const size = isMobile ? 100 : 120;
@@ -44,12 +49,37 @@ export default function Home() {
   );
 
   const menuItems = [
-    { label: "Über uns", path: "#about" },
+    { label: "Wer wir sind", path: "#about" },
     { label: "Projekte", path: "#projects" },
     { label: "Werkzeuge", path: "#tools" },
     { label: "Kontakt", path: "#contact" }
   ];
 
+  useEffect(() => {
+    const sectionIds = ["about", "projects", "tools", "contact"];
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setActiveSection(id);
+          }
+        },
+        { threshold: 0.6 } // mindestens 60% sichtbar
+      );
+
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => {
+      observers.forEach((observer) => observer.disconnect());
+    };
+  }, []);
 
   return (
     <Box
@@ -72,7 +102,7 @@ export default function Home() {
           alignItems: "center",
           justifyContent: "center",
           height: "100vh",
-          maxWidth: 800,
+          maxWidth: "lg",
           width: "100%",
           overflow: "hidden",
         }}
@@ -109,8 +139,44 @@ export default function Home() {
         </Box>
         <Box
           sx={{
+            position: 'absolute',
+            top: size,
+            transform: active ? "scaleY(1)" : "scaleY(0)",
+            transformOrigin: "top",
+            transition: "transform 0.8s ease",
+            transitionDelay: active ? '0.8s' : '0s',
+            width: '100%',
+            bgcolor: '#E4BBEF',
+            display: 'flex',
+            justifyContent: 'center',
+            zIndex: 10,
+            py: 1
+          }}
+        >
+          {menuItems.map(({ label, path }) => (
+            <Button
+              key={label}
+              href={path}
+              variant="text"
+              sx={{
+                fontFamily: "'Comfortaa', sans-serif",
+                color: activeSection === path.slice(1) ? "white" : "#6E2E87",
+                backgroundColor: activeSection === path.slice(1) ? "#6E2E87" : "transparent",
+                mx: 1,
+                ":hover": {
+                  bgcolor: "#6E2E87",
+                  color: "white"
+                }
+              }}
+            >
+              {label}
+            </Button>
+          ))}
+        </Box>
+        <Box
+          sx={{
             position: "absolute",
-            top: `${size}px`,
+            top: `calc(12px + ${size}px)`,
             bottom: `${size}px`,
             transform: active ? "scaleY(1)" : "scaleY(0)",
             transformOrigin: "center",
@@ -118,58 +184,23 @@ export default function Home() {
             left: "0",
             width: "100%",
             bgcolor: "white",
-            borderRadius: 4,
+            borderRadius: 3,
             boxShadow: "0 8px 24px rgba(0, 0, 0, 0.2)",
             zIndex: 5,
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
+            alignItems: "left",
+            justifyContent: "top",
             px: 4,
             py: 3,
-            textAlign: "center",
+            textAlign: "left",
             overflowY: "auto"
           }}
         >
-          <Typography variant="h5" sx={{ fontFamily: "'Comfortaa', sans-serif", color: "#6E2E87", mb: 2 }}>
-            Willkommen bei überli.ch
-          </Typography>
-          <Typography variant="body1" sx={{ fontFamily: "'Comfortaa', sans-serif", color: "#6E2E87" }}>
-            IT-Beratung für Bildung – mit Freude, Struktur und Wirkung.
-          </Typography>
-          <Fade in={active} timeout={600}>
-            <Box
-              sx={{
-                position: 'fixed',
-                top: 0,
-                width: '100%',
-                bgcolor: '#E4BBEF',
-                display: 'flex',
-                justifyContent: 'center',
-                zIndex: 10,
-                py: 1
-              }}
-            >
-              {menuItems.map(({ label, path }) => (
-                <Button
-                  key={label}
-                  href={path} // ersetzt navigate(path)
-                  variant="text"
-                  sx={{
-                    fontFamily: "'Comfortaa', sans-serif",
-                    color: "#6E2E87",
-                    mx: 1,
-                    ":hover": {
-                      bgcolor: "#6E2E87",
-                      color: "white"
-                    }
-                  }}
-                >
-                  {label}
-                </Button>
-              ))}
-            </Box>
-          </Fade>
+          <About />
+          <Projects />
+          <Tools />
+          <Contact />
         </Box>
         {/* Hintergrund-Rechteck für untere Reihe */}
         <Box
