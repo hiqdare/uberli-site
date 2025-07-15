@@ -49,7 +49,7 @@ export default function Home() {
   );
 
   const menuItems = [
-    { label: "Wer wir sind", path: "#about" },
+    { label: "Wir & Warum", path: "#about" },
     { label: "Projekte", path: "#projects" },
     { label: "Werkzeuge", path: "#tools" },
     { label: "Kontakt", path: "#contact" }

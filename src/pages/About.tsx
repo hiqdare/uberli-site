@@ -1,5 +1,6 @@
 import { Box, Typography, Grid, Paper, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import Team from "./Team";
 
 const services = [
   {
@@ -47,7 +48,7 @@ export default function About() {
           mb: 4
         }}
       >
-        Über uns
+        Wir & Warum
       </Typography>
 
       <Typography
@@ -95,6 +96,7 @@ export default function About() {
           </Grid>
         ))}
       </Grid>
+      <Team />
     </Box>
   );
 }
