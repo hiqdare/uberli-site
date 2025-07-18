@@ -6,4 +6,12 @@ export default defineConfig({
   server: {
     open: true,
   },
+  
+  server: {
+    proxy: {
+      "/api": "http://localhost:3001"
+    }
+    }
 })
+
+

@@ -7,7 +7,7 @@ export default function Kontakt() {
 
   return (
     <Box
-      id="projects"
+      id="tools"
       sx={{
         py: isMobile ? 6 : 10,
         px: 4,
