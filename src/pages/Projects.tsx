@@ -4,6 +4,8 @@ import { useTheme } from "@mui/material/styles";
 export default function Projects() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const cardBaseBg = theme.palette.mode === "dark" ? "#342A4C" : "#FAF3FF";
+  const cardHoverBg = theme.palette.mode === "dark" ? "#3C3057" : "#F5EAFF";
 
   const projects = [
     {
@@ -33,37 +35,44 @@ export default function Projects() {
     <Box
       id="projects"
       sx={{
+        width: "100%",
         py: isMobile ? 6 : 10,
-        px: 4,
-        maxWidth: "lg",
-        margin: "0 auto",
+        px: 0,
+        maxWidth: "none",
+        margin: 0,
         textAlign: "left"
       }}
     >
       <Typography
         variant="h4"
         sx={{
-          fontFamily: "'Comfortaa', sans-serif",
-          color: "#6E2E87",
-          mb: 4
+          mb: 2
         }}
       >
         Unsere Projekte
       </Typography>
+      <Typography variant="body1" sx={{ mb: 4, maxWidth: 760 }}>
+        Konkrete Programme mit messbarem Mehrwert für Jugendliche, Schulen und Organisationen.
+      </Typography>
 
-       <Grid container spacing={4}>
+      <Grid container spacing={4}>
         {projects.map((project) => (
-          <Grid size={{xs:12, sm:6, md: 6}} key={project.title}>
+          <Grid size={{ xs: 12, sm: 6, md: 6 }} key={project.title}>
             <Paper
               elevation={3}
               sx={{
                 p: 3,
                 borderRadius: 4,
                 height: "100%",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                bgcolor: cardBaseBg,
+                border: "1px solid",
+                borderColor: "divider",
+                transition: "transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease",
                 "&:hover": {
-                  transform: "scale(1.03)",
-                  boxShadow: "0 8px 24px rgba(0, 0, 0, 0.2)"
+                  transform: "translateY(-6px)",
+                  bgcolor: cardHoverBg,
+                  borderColor: "secondary.main",
+                  boxShadow: theme.palette.mode === "dark" ? "0 10px 24px rgba(0, 0, 0, 0.35)" : "0 10px 24px rgba(110, 46, 135, 0.18)",
                 }
               }}
             >
@@ -78,8 +87,6 @@ export default function Projects() {
                   variant="subtitle1"
                   sx={{
                     mt: 2,
-                    fontFamily: "'Comfortaa', sans-serif",
-                    color: "#6E2E87",
                     fontWeight: "bold"
                   }}
                 >
@@ -88,9 +95,7 @@ export default function Projects() {
                 <Typography
                   variant="body2"
                   sx={{
-                    mt: 1,
-                    fontFamily: "'Comfortaa', sans-serif",
-                    color: "#6E2E87"
+                    mt: 1
                   }}
                 >
                   {project.description}

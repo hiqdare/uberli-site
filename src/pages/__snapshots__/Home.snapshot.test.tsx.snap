@@ -1,0 +1,675 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Home Snapshot > rendert konsistent im Light Mode 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root css-1e5l7cu"
+  >
+    <div
+      class="MuiStack-root css-q780dc-MuiStack-root"
+    >
+      <div
+        class="MuiBox-root css-f55yoq"
+      />
+      <div
+        class="MuiBox-root css-1osqxr4"
+      >
+        <div
+          class="MuiBox-root css-1w0dmnq"
+        >
+          <div
+            class="MuiBox-root css-1bfx0ml"
+          >
+            <div
+              class="MuiBox-root css-bmnav0"
+            >
+              u
+            </div>
+          </div>
+          <div
+            class="MuiBox-root css-1bfx0ml"
+          >
+            <div
+              class="MuiBox-root css-wnfdxf"
+            >
+              b
+            </div>
+          </div>
+          <div
+            class="MuiBox-root css-1bfx0ml"
+          >
+            <div
+              class="MuiBox-root css-wnfdxf"
+            >
+              e
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="MuiStack-root css-st7vp2-MuiStack-root"
+      >
+        <a
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1xnci66-MuiButtonBase-root-MuiButton-root"
+          href="#about"
+          tabindex="0"
+        >
+          Wir & Warum
+        </a>
+        <a
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1xnci66-MuiButtonBase-root-MuiButton-root"
+          href="#projects"
+          tabindex="0"
+        >
+          Projekte
+        </a>
+        <a
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1xnci66-MuiButtonBase-root-MuiButton-root"
+          href="#tools"
+          tabindex="0"
+        >
+          Werkzeuge
+        </a>
+        <a
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1xnci66-MuiButtonBase-root-MuiButton-root"
+          href="#contact"
+          tabindex="0"
+        >
+          Kontakt
+        </a>
+      </div>
+      <div
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation3 css-ajt4zg-MuiPaper-root"
+        style="--Paper-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);"
+      >
+        <h4
+          class="MuiTypography-root MuiTypography-h4 css-11o1r25-MuiTypography-root"
+        >
+          Digitale Wirkung mit Haltung.
+        </h4>
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-1ccgtqn-MuiTypography-root"
+        >
+          Wir unterstützen Bildungsinstitutionen und gemeinnützige Organisationen bei IT, Cloud, Sicherheit und KI. Scrolle durch die Bereiche und entdecke unsere Projekte und Werkzeuge.
+        </p>
+        <div
+          class="MuiBox-root css-1c5cwdj"
+          id="about"
+        >
+          <div
+            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 css-i48j7w-MuiPaper-root"
+            style="--Paper-shadow: none;"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-overline css-g2zz2l-MuiTypography-root"
+            >
+              Haltung und Wirkung
+            </span>
+            <h4
+              class="MuiTypography-root MuiTypography-h4 css-19e7ufk-MuiTypography-root"
+            >
+              Wir & Warum
+            </h4>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-8gpfz7-MuiTypography-root"
+            >
+              Wir verbinden IT-Beratung mit Bildungswirkung und setzen bewusst auf pragmatische, nachhaltige Lösungen.
+            </p>
+          </div>
+          <h5
+            class="MuiTypography-root MuiTypography-h5 css-12gx69q-MuiTypography-root"
+          >
+            Unser Hintergrund
+          </h5>
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-3n2k5q-MuiTypography-root"
+          >
+            Angefangen hat alles mit YIA und unserem Ziel, Technik für Kinder und Jugendliche greifbar zu machen. Aus dieser Begeisterung ist 
+            <strong>
+              uberli
+            </strong>
+             entstanden – ein IT-Beratungsangebot für Bildungsinstitutionen und gemeinnützige Organisationen. Was wir anbieten:
+          </p>
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-row MuiGrid-spacing-xs-4 css-kqg16c-MuiGrid-root"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 css-14d7tkn-MuiGrid-root"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-54nyqq-MuiPaper-root"
+                style="--Paper-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);"
+              >
+                <img
+                  alt="Digitale Arbeitsumgebungen"
+                  class="MuiBox-root css-14nzggf"
+                  src="/images/digitales_arbeiten.png"
+                />
+                <h6
+                  class="MuiTypography-root MuiTypography-subtitle1 css-o9fdwo-MuiTypography-root"
+                >
+                  Digitale Arbeitsumgebungen
+                </h6>
+                <p
+                  class="MuiTypography-root MuiTypography-body2 css-8rgr16-MuiTypography-root"
+                >
+                  Wir unterstützen beim Aufbau von IT-Infrastrukturen, Netzwerken und Geräten.
+                </p>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 css-14d7tkn-MuiGrid-root"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-54nyqq-MuiPaper-root"
+                style="--Paper-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);"
+              >
+                <img
+                  alt="Cloud-Dienstleistungen"
+                  class="MuiBox-root css-14nzggf"
+                  src="/images/cloud_anwendungen.png"
+                />
+                <h6
+                  class="MuiTypography-root MuiTypography-subtitle1 css-o9fdwo-MuiTypography-root"
+                >
+                  Cloud-Dienstleistungen
+                </h6>
+                <p
+                  class="MuiTypography-root MuiTypography-body2 css-8rgr16-MuiTypography-root"
+                >
+                  Beratung zu modernen Cloud-Lösungen, Migration und Nutzung von Cloud-Services.
+                </p>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 css-14d7tkn-MuiGrid-root"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-54nyqq-MuiPaper-root"
+                style="--Paper-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);"
+              >
+                <img
+                  alt="IT-Sicherheit"
+                  class="MuiBox-root css-14nzggf"
+                  src="/images/security.png"
+                />
+                <h6
+                  class="MuiTypography-root MuiTypography-subtitle1 css-o9fdwo-MuiTypography-root"
+                >
+                  IT-Sicherheit
+                </h6>
+                <p
+                  class="MuiTypography-root MuiTypography-body2 css-8rgr16-MuiTypography-root"
+                >
+                  Unterstützung bei Sicherheitskonzepten, Datenschutz und sicheren Architekturen.
+                </p>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 css-14d7tkn-MuiGrid-root"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation4 css-54nyqq-MuiPaper-root"
+                style="--Paper-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);"
+              >
+                <img
+                  alt="KI-Dienste"
+                  class="MuiBox-root css-14nzggf"
+                  src="/images/ai.png"
+                />
+                <h6
+                  class="MuiTypography-root MuiTypography-subtitle1 css-o9fdwo-MuiTypography-root"
+                >
+                  KI-Dienste
+                </h6>
+                <p
+                  class="MuiTypography-root MuiTypography-body2 css-8rgr16-MuiTypography-root"
+                >
+                  Begleitung bei der Einführung und Nutzung von KI-Technologien im Bildungsbereich.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="MuiBox-root css-1hnm6b6"
+          >
+            <h5
+              class="MuiTypography-root MuiTypography-h5 css-14bc4n7-MuiTypography-root"
+            >
+              Das Team
+            </h5>
+            <div
+              class="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-row MuiGrid-spacing-xs-4 css-kqg16c-MuiGrid-root"
+            >
+              <div
+                class="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 css-14d7tkn-MuiGrid-root"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation3 css-18ye0bz-MuiPaper-root"
+                  style="--Paper-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiBox-root css-xi606m"
+                  >
+                    <img
+                      alt="Henrique Säuberli"
+                      height="100"
+                      src="/images/henrique.png"
+                      style="border-radius: 50%; object-fit: cover;"
+                      width="100"
+                    />
+                    <h6
+                      class="MuiTypography-root MuiTypography-subtitle1 css-c1vx1v-MuiTypography-root"
+                    >
+                      Henrique Säuberli
+                    </h6>
+                    <p
+                      class="MuiTypography-root MuiTypography-body2 css-16m3a93-MuiTypography-root"
+                    >
+                      Gründer & IT-Berater
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body2 css-16m3a93-MuiTypography-root"
+                    >
+                      Bringt über 20 Jahre Erfahrung in IT-Architektur und gemeinnützigen Projekten mit.
+                    </p>
+                    <a
+                      class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-5y5ohp-MuiTypography-root-MuiLink-root"
+                      href="https://www.linkedin.com/in/henriquesaeuberli/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1s4kbax-MuiSvgIcon-root"
+                        data-testid="LinkedInIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 css-14d7tkn-MuiGrid-root"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation3 css-18ye0bz-MuiPaper-root"
+                  style="--Paper-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiBox-root css-xi606m"
+                  >
+                    <img
+                      alt="Renata Säuberli"
+                      height="100"
+                      src="/images/renata.png"
+                      style="border-radius: 50%; object-fit: cover;"
+                      width="100"
+                    />
+                    <h6
+                      class="MuiTypography-root MuiTypography-subtitle1 css-c1vx1v-MuiTypography-root"
+                    >
+                      Renata Säuberli
+                    </h6>
+                    <p
+                      class="MuiTypography-root MuiTypography-body2 css-16m3a93-MuiTypography-root"
+                    >
+                      Projektleitung & Bildungsprojekte
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body2 css-16m3a93-MuiTypography-root"
+                    >
+                      Stärkt mit pädagogischer Expertise und Projektleistungserfahrung jede Umsetzung.
+                    </p>
+                    <a
+                      class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-5y5ohp-MuiTypography-root-MuiLink-root"
+                      href="https://www.linkedin.com/in/renatasaeuberli/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1s4kbax-MuiSvgIcon-root"
+                        data-testid="LinkedInIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 css-14d7tkn-MuiGrid-root"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation3 css-18ye0bz-MuiPaper-root"
+                  style="--Paper-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiBox-root css-xi606m"
+                  >
+                    <img
+                      alt="Kellen Aika Saito"
+                      height="100"
+                      src="/images/kellen.png"
+                      style="border-radius: 50%; object-fit: cover;"
+                      width="100"
+                    />
+                    <h6
+                      class="MuiTypography-root MuiTypography-subtitle1 css-c1vx1v-MuiTypography-root"
+                    >
+                      Kellen Aika Saito
+                    </h6>
+                    <p
+                      class="MuiTypography-root MuiTypography-body2 css-16m3a93-MuiTypography-root"
+                    >
+                      Finanzen & Administration
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body2 css-16m3a93-MuiTypography-root"
+                    >
+                      Die starke Beratung für Finanzfragen und Investition.
+                    </p>
+                    <a
+                      class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-5y5ohp-MuiTypography-root-MuiLink-root"
+                      href="https://www.linkedin.com/in/kellen-aika-saito-9392aa77/"
+                      rel="noopener noreferrer"
+                      target="_blank"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1s4kbax-MuiSvgIcon-root"
+                        data-testid="LinkedInIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root css-dsb0zc"
+          id="projects"
+        >
+          <div
+            class="MuiBox-root css-2najlb"
+          />
+          <h4
+            class="MuiTypography-root MuiTypography-h4 css-i6qath-MuiTypography-root"
+          >
+            Unsere Projekte
+          </h4>
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-133he2x-MuiTypography-root"
+          >
+            Konkrete Programme mit messbarem Mehrwert für Jugendliche, Schulen und Organisationen.
+          </p>
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-row MuiGrid-spacing-xs-4 css-1finbno-MuiGrid-root"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 css-14d7tkn-MuiGrid-root"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation3 css-18ye0bz-MuiPaper-root"
+                style="--Paper-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);"
+              >
+                <div
+                  class="MuiBox-root css-xi606m"
+                >
+                  <img
+                    alt="YIA"
+                    height="80"
+                    src="/images/yia_logo.png"
+                    width="80"
+                  />
+                  <h6
+                    class="MuiTypography-root MuiTypography-subtitle1 css-c1vx1v-MuiTypography-root"
+                  >
+                    YIA – Youth Intelligence Agency
+                  </h6>
+                  <p
+                    class="MuiTypography-root MuiTypography-body2 css-u360g5-MuiTypography-root"
+                  >
+                    Mit der Youth Intelligence Agency machen wir Technik für Kinder und Jugendliche erlebbar – mit echten Herausforderungen und greifbaren Ergebnissen.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 css-14d7tkn-MuiGrid-root"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation3 css-18ye0bz-MuiPaper-root"
+                style="--Paper-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);"
+              >
+                <div
+                  class="MuiBox-root css-xi606m"
+                >
+                  <img
+                    alt="Pop You Up"
+                    height="80"
+                    src="/images/pop_you_up_icon.svg"
+                    width="80"
+                  />
+                  <h6
+                    class="MuiTypography-root MuiTypography-subtitle1 css-c1vx1v-MuiTypography-root"
+                  >
+                    Pop You Up
+                  </h6>
+                  <p
+                    class="MuiTypography-root MuiTypography-body2 css-u360g5-MuiTypography-root"
+                  >
+                    Ein Empowerment-Programm für Jugendliche im Übergang zwischen Schule und Beruf. Im Zentrum steht das eigene Potenzial – entdeckt mit Herz, Kopf und Hand.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-direction-xs-row MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-6 css-14d7tkn-MuiGrid-root"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation3 css-18ye0bz-MuiPaper-root"
+                style="--Paper-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);"
+              >
+                <div
+                  class="MuiBox-root css-xi606m"
+                >
+                  <img
+                    alt="Futurebooster"
+                    height="80"
+                    src="/images/FutureBooster_logo.png"
+                    width="80"
+                  />
+                  <h6
+                    class="MuiTypography-root MuiTypography-subtitle1 css-c1vx1v-MuiTypography-root"
+                  >
+                    Futurebooster
+                  </h6>
+                  <p
+                    class="MuiTypography-root MuiTypography-body2 css-u360g5-MuiTypography-root"
+                  >
+                    Eine Plattform zur Laufbahnförderung: Jugendliche entdecken Aktivitäten, bauen ihr Portfolio auf und treten in Kontakt mit Ausbildungsbetrieben.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root css-6ine5q"
+          id="tools"
+        >
+          <h4
+            class="MuiTypography-root MuiTypography-h4 css-tpz3ob-MuiTypography-root"
+          >
+            Werkzeuge
+          </h4>
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-m0z76d-MuiTypography-root"
+          >
+            Eine Auswahl cloudbasierter Lösungen, die wir pragmatisch für Bildungs- und Non-Profit-Kontexte einsetzen.
+          </p>
+          <div
+            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation2 css-a8xx2d-MuiPaper-root"
+            style="--Paper-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1m3wh25-MuiTypography-root"
+            >
+              Wir kombinieren bewährte Plattformen mit klaren Prozessen, damit Teams schneller ins Tun kommen.
+            </p>
+            <div
+              class="MuiStack-root css-pex525-MuiStack-root"
+            >
+              <div
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorSecondary MuiChip-outlinedSecondary css-p1jeey-MuiChip-root"
+              >
+                <span
+                  class="MuiChip-label MuiChip-labelMedium css-16cgrcw-MuiChip-label"
+                >
+                  Microsoft 365
+                </span>
+              </div>
+              <div
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorSecondary MuiChip-outlinedSecondary css-p1jeey-MuiChip-root"
+              >
+                <span
+                  class="MuiChip-label MuiChip-labelMedium css-16cgrcw-MuiChip-label"
+                >
+                  Azure
+                </span>
+              </div>
+              <div
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorSecondary MuiChip-outlinedSecondary css-p1jeey-MuiChip-root"
+              >
+                <span
+                  class="MuiChip-label MuiChip-labelMedium css-16cgrcw-MuiChip-label"
+                >
+                  M365 Copilot
+                </span>
+              </div>
+              <div
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorSecondary MuiChip-outlinedSecondary css-p1jeey-MuiChip-root"
+              >
+                <span
+                  class="MuiChip-label MuiChip-labelMedium css-16cgrcw-MuiChip-label"
+                >
+                  Power Platform
+                </span>
+              </div>
+              <div
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorSecondary MuiChip-outlinedSecondary css-p1jeey-MuiChip-root"
+              >
+                <span
+                  class="MuiChip-label MuiChip-labelMedium css-16cgrcw-MuiChip-label"
+                >
+                  KI-Assistenten
+                </span>
+              </div>
+            </div>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-11py78q-MuiTypography-root"
+            >
+              Plattform
+            </p>
+            <a
+              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-5f7pj0-MuiTypography-root-MuiLink-root"
+              href="https://secret.uberli.ch"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              secret.uberli.ch
+            </a>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root css-6ine5q"
+          id="contact"
+        >
+          <h4
+            class="MuiTypography-root MuiTypography-h4 css-tpz3ob-MuiTypography-root"
+          >
+            Kontakt aufnehmen
+          </h4>
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-m0z76d-MuiTypography-root"
+          >
+            Ob Projektidee, konkrete Anfrage oder unverbindliches Gespräch: wir freuen uns auf den Austausch.
+          </p>
+          <div
+            class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation2 css-a8xx2d-MuiPaper-root"
+            style="--Paper-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-4ber4s-MuiTypography-root"
+            >
+              E-Mail
+            </p>
+            <a
+              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways css-2220o2-MuiTypography-root-MuiLink-root"
+              href="mailto:anfrage@uberli.ch"
+            >
+              anfrage@uberli.ch
+            </a>
+          </div>
+        </div>
+      </div>
+      <div
+        class="MuiBox-root css-1my3zxk"
+      />
+      <div
+        class="MuiBox-root css-1osqxr4"
+      >
+        <div
+          class="MuiBox-root css-1w0dmnq"
+        >
+          <div
+            class="MuiBox-root css-1bfx0ml"
+          >
+            <div
+              class="MuiBox-root css-wnfdxf"
+            >
+              r
+            </div>
+          </div>
+          <div
+            class="MuiBox-root css-1bfx0ml"
+          >
+            <div
+              class="MuiBox-root css-wnfdxf"
+            >
+              l
+            </div>
+          </div>
+          <div
+            class="MuiBox-root css-1bfx0ml"
+          >
+            <div
+              class="MuiBox-root css-bmnav0"
+            >
+              i
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

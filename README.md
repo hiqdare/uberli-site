@@ -1,46 +1,113 @@
-# Getting Started with Create React App
+# uberli-site
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Marketing- und Beratungswebsite für uberli, umgesetzt mit React, TypeScript, Material UI und Vite.
 
-## Available Scripts
+## Stack
 
-In the project directory, you can run:
+- React 19
+- TypeScript
+- Vite
+- Material UI
+- React Router
+- ESLint + Prettier
+- Vitest + Testing Library
 
-### `npm start`
+## Lokale Entwicklung
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Voraussetzungen:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Node.js 22.14 oder neuer
+- npm
 
-### `npm test`
+Installation:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm install
+```
 
-### `npm run build`
+Entwicklungsserver starten:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm run dev
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Die Anwendung läuft danach standardmässig unter der von Vite ausgegebenen lokalen URL.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Verfügbare Skripte
 
-### `npm run eject`
+```bash
+npm run dev
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Startet den lokalen Entwicklungsserver.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm run build
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Führt TypeScript-Checks aus und erzeugt den Produktions-Build.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+npm run preview
+```
 
-## Learn More
+Startet eine lokale Vorschau des Produktions-Builds.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm run lint
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Prüft den Quellcode mit ESLint.
+
+```bash
+npm run lint:fix
+```
+
+Wendet automatische ESLint-Korrekturen an, soweit möglich.
+
+```bash
+npm run format
+```
+
+Formatiert den Quellcode mit Prettier.
+
+```bash
+npm run test
+```
+
+Führt die Unit-Tests mit Vitest aus.
+
+## Seitenstruktur
+
+Die Website nutzt echte Routen statt einer einzelnen Scroll-Seite:
+
+- /
+- /about
+- /projects
+- /tools
+- /contact
+
+Die Seiten werden lazy geladen, damit der Initial-Load kleiner bleibt.
+
+## Design-System
+
+- Zentrales Theme in [src/theme.ts](src/theme.ts)
+- Light- und Dark-Mode werden unterstützt
+- Die Farblogik liegt im Theme, nicht mehr verteilt in den Komponenten
+
+## Tests
+
+Das Projekt verwendet Vitest mit jsdom und Testing Library.
+
+Die Basiskonfiguration liegt in:
+
+- [vite.config.ts](vite.config.ts)
+- [src/setupTests.ts](src/setupTests.ts)
+
+Ein erster Komponententest ist vorhanden in:
+
+- [src/pages/Home.test.tsx](src/pages/Home.test.tsx)
+
+## Build-Hinweise
+
+Der Build ist auf Code-Splitting optimiert. Grössere Bibliotheken wie React und Material UI werden in eigene Chunks ausgelagert, um Caching und Ladezeit zu verbessern.

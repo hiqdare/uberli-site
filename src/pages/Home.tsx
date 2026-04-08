@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import { Box, Button, useMediaQuery } from "@mui/material";
+import { useEffect, useState } from "react";
+import { Box, Button, Paper, Stack, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import About from "./About";
 import Contact from "./Contact";
@@ -23,22 +23,15 @@ const circleStyle = (bgColor: string, textColor: string, size: number) => ({
   transition: "all 0.6s ease"
 });
 
-export default function Home() {
-  const [active, setActive] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>("");
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const size = isMobile ? 100 : 120;
+type CircleRowProps = {
+  letters: string[];
+  bgColors: string[];
+  textColors: string[];
+  size: number;
+};
 
-  const handleActivate = () => {
-  setActive(true);
-    setTimeout(() => {
-      document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
-    }, 1000); // nach Logo-Animation
-  };
-
-
-  const CircleRow = ({ letters, bgColors, textColors }: { letters: string[], bgColors: string[], textColors: string[] }) => (
+function CircleRow({ letters, bgColors, textColors, size }: CircleRowProps) {
+  return (
     <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", position: "relative" }}>
       {letters.map((char, idx) => (
         <Box key={char} sx={{ position: "relative", display: "flex", justifyContent: "center" }}>
@@ -47,13 +40,39 @@ export default function Home() {
       ))}
     </Box>
   );
+}
+
+export default function Home() {
+  const [active, setActive] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("");
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const size = isMobile ? 100 : 120;
+
+  const handleActivate = () => {
+    setActive(true);
+  };
 
   const menuItems = [
     { label: "Wir & Warum", path: "#about" },
     { label: "Projekte", path: "#projects" },
     { label: "Werkzeuge", path: "#tools" },
-    { label: "Kontakt", path: "#contact" }
+    { label: "Kontakt", path: "#contact" },
   ];
+
+  const divider = (
+    <Box
+      aria-hidden="true"
+      sx={{
+        width: "100%",
+        height: 1,
+        my: 5,
+        background: theme.palette.mode === "dark"
+          ? "linear-gradient(90deg, transparent, rgba(202,190,226,0.55), transparent)"
+          : "linear-gradient(90deg, transparent, rgba(110,46,135,0.28), transparent)",
+      }}
+    />
+  );
 
   useEffect(() => {
     const sectionIds = ["about", "projects", "tools", "contact"];
@@ -69,7 +88,7 @@ export default function Home() {
             setActiveSection(id);
           }
         },
-        { threshold: 0.6 } // mindestens 60% sichtbar
+        { threshold: 0.5 }
       );
 
       observer.observe(el);
@@ -79,13 +98,13 @@ export default function Home() {
     return () => {
       observers.forEach((observer) => observer.disconnect());
     };
-  }, []);
+  }, [active]);
 
   return (
     <Box
       sx={{
         minHeight: "100vh",
-        bgcolor: "#E4BBEF",
+        bgcolor: theme.palette.background.paper,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -93,9 +112,8 @@ export default function Home() {
         overflow: "hidden",
       }}
     >
-      <Box
+      <Stack
         sx={{
-          cursor: "pointer",
           position: "relative",
           display: "flex",
           flexDirection: "column",
@@ -113,11 +131,11 @@ export default function Home() {
             position: "absolute",
             top: 0,
             left: "50%",
-            transform: active ? `translate(-50%, calc(${size/2}px))` : `translate(-50%, calc(50vh - ${size}px))`,
+            transform: active ? `translate(-50%, calc(${size / 2}px))` : `translate(-50%, calc(50vh - ${size}px))`,
             transition: "transform 0.8s ease",
             width: size * 2,
             height: size * 0.5,
-            backgroundColor: "#B84AE7",
+            backgroundColor: theme.palette.secondary.main,
             zIndex: 0,
             borderRadius: 0
           }}
@@ -133,24 +151,30 @@ export default function Home() {
         >
           <CircleRow
             letters={["u", "b", "e"]}
-            bgColors={["#ffffff", "#6E2E87", "#6E2E87"]}
-            textColors={["#6E2E87", "#ffffff", "#ffffff"]}
+            bgColors={["#ffffff", theme.palette.text.primary, theme.palette.text.primary]}
+            textColors={[theme.palette.text.primary, "#ffffff", "#ffffff"]}
+            size={size}
           />
         </Box>
-        <Box
+        <Stack
           sx={{
-            position: 'absolute',
+            position: "absolute",
             top: size,
             transform: active ? "scaleY(1)" : "scaleY(0)",
             transformOrigin: "top",
             transition: "transform 0.8s ease",
-            transitionDelay: active ? '0.8s' : '0s',
-            width: '100%',
-            bgcolor: '#E4BBEF',
-            display: 'flex',
-            justifyContent: 'center',
+            transitionDelay: active ? "0.8s" : "0s",
+            width: "100%",
+            bgcolor: theme.palette.background.paper,
+            display: "flex",
+            justifyContent: "center",
             zIndex: 10,
-            py: 1
+            py: 2,
+            px: 2,
+            flexDirection: "row",
+            alignItems: "center",
+            gap: 1,
+            overflowX: "auto",
           }}
         >
           {menuItems.map(({ label, path }) => (
@@ -160,11 +184,12 @@ export default function Home() {
               variant="text"
               sx={{
                 fontFamily: "'Comfortaa', sans-serif",
-                color: activeSection === path.slice(1) ? "white" : "#6E2E87",
-                backgroundColor: activeSection === path.slice(1) ? "#6E2E87" : "transparent",
-                mx: 1,
+                whiteSpace: "nowrap",
+                color: activeSection === path.slice(1) ? "#fff" : theme.palette.text.primary,
+                backgroundColor: activeSection === path.slice(1) ? theme.palette.text.primary : "transparent",
+                mx: 0.25,
                 ":hover": {
-                  bgcolor: "#6E2E87",
+                  bgcolor: theme.palette.text.primary,
                   color: "white"
                 }
               }}
@@ -172,47 +197,61 @@ export default function Home() {
               {label}
             </Button>
           ))}
-        </Box>
-        <Box
+        </Stack>
+        <Paper
+          elevation={3}
           sx={{
             position: "absolute",
-            top: `calc(12px + ${size}px)`,
-            bottom: `${size}px`,
+            top: `calc(36px + ${size}px)`,
+            bottom: `${size + 8}px`,
             transform: active ? "scaleY(1)" : "scaleY(0)",
             transformOrigin: "center",
             transition: "transform 0.8s ease",
             left: "0",
             width: "100%",
-            bgcolor: "white",
             borderRadius: 3,
-            boxShadow: "0 8px 24px rgba(0, 0, 0, 0.2)",
+            bgcolor: theme.palette.mode === "dark" ? "#2A2340" : "#FCF8FF",
+            color: theme.palette.text.primary,
             zIndex: 5,
             display: "flex",
             flexDirection: "column",
-            alignItems: "left",
-            justifyContent: "top",
-            px: 4,
+            alignItems: "flex-start",
+            justifyContent: "flex-start",
+            px: isMobile ? 2.5 : 4,
             py: 3,
             textAlign: "left",
             overflowY: "auto"
           }}
         >
+          <Typography variant="h4" sx={{ mb: 2, mt: { xs: 3, sm: 4 } }}>
+            Digitale Wirkung mit Haltung.
+          </Typography>
+          <Typography variant="body1" sx={{ mb: 4, maxWidth: 760 }}>
+            Wir unterstützen Bildungsinstitutionen und gemeinnützige Organisationen bei IT, Cloud,
+            Sicherheit und KI. Scrolle durch die Bereiche und entdecke unsere Projekte und Werkzeuge.
+          </Typography>
+
+          <Box sx={{ height: { xs: 20, sm: 28 } }} aria-hidden="true" />
+
           <About />
+          {divider}
           <Projects />
+          {divider}
           <Tools />
+          {divider}
           <Contact />
-        </Box>
+        </Paper>
         {/* Hintergrund-Rechteck für untere Reihe */}
         <Box
           sx={{
             position: "absolute",
             top: 0,
             left: "50%",
-            transform: active ? `translate(-50%, calc(100vh - ${size}px))` : `translate(-50%, calc(50vh - ${size/2}px))`,
+            transform: active ? `translate(-50%, calc(100vh - ${size}px))` : `translate(-50%, calc(50vh - ${size / 2}px))`,
             transition: "transform 0.8s ease",
             width: size * 2,
             height: size * 0.5,
-            backgroundColor: "#B84AE7",
+            backgroundColor: theme.palette.secondary.main,
             zIndex: 0,
             borderRadius: 0
           }}
@@ -227,11 +266,12 @@ export default function Home() {
         >
           <CircleRow
             letters={["r", "l", "i"]}
-            bgColors={["#6E2E87", "#6E2E87", "#ffffff"]}
-            textColors={["#ffffff", "#ffffff", "#6E2E87"]}
+            bgColors={[theme.palette.text.primary, theme.palette.text.primary, "#ffffff"]}
+            textColors={["#ffffff", "#ffffff", theme.palette.text.primary]}
+            size={size}
           />
         </Box>
-      </Box>
+      </Stack>
     </Box>
   );
 }

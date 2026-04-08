@@ -1,4 +1,4 @@
-import { Box, Typography, Grid, Paper, Link } from "@mui/material";
+import { Box, Typography, Grid, Paper, Link, useTheme } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 const teamMembers = [
@@ -26,25 +26,37 @@ const teamMembers = [
 ];
 
 export default function Team() {
+  const theme = useTheme();
+  const cardBaseBg = theme.palette.mode === "dark" ? "#342A4C" : "#FAF3FF";
+  const cardHoverBg = theme.palette.mode === "dark" ? "#3C3057" : "#F5EAFF";
+
   return (
-    <Box sx={{ mt: 6 }}>
-      <Typography variant="h5" sx={{ fontFamily: "'Comfortaa', sans-serif", color: "#6E2E87", mb: 4, textAlign: "left" }}>
+    <Box sx={{ mt: 6, width: "100%" }}>
+      <Typography variant="h5" sx={{ mb: 2, textAlign: "left" }}>
         Das Team
+      </Typography>
+      <Typography variant="body1" sx={{ mb: 4, maxWidth: 760 }}>
+        Menschen mit Erfahrung in Technologie, Bildung und Umsetzung.
       </Typography>
 
       <Grid container spacing={4}>
         {teamMembers.map((member) => (
-          <Grid size= {{xs:12, sm:6, md:6}} key={member.name}>
+          <Grid size={{ xs: 12, sm: 6, md: 6 }} key={member.name}>
             <Paper
               elevation={3}
               sx={{
                 p: 3,
                 borderRadius: 4,
                 height: "100%",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                bgcolor: cardBaseBg,
+                border: "1px solid",
+                borderColor: "divider",
+                transition: "transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease",
                 "&:hover": {
-                  transform: "scale(1.03)",
-                  boxShadow: "0 8px 24px rgba(0, 0, 0, 0.2)"
+                  transform: "translateY(-6px)",
+                  bgcolor: cardHoverBg,
+                  borderColor: "secondary.main",
+                  boxShadow: theme.palette.mode === "dark" ? "0 10px 24px rgba(0, 0, 0, 0.35)" : "0 10px 24px rgba(110, 46, 135, 0.18)",
                 }
               }}
             >
@@ -58,24 +70,24 @@ export default function Team() {
                 />
                 <Typography
                   variant="subtitle1"
-                  sx={{ mt: 2, fontFamily: "'Comfortaa', sans-serif", color: "#6E2E87", fontWeight: "bold" }}
+                  sx={{ mt: 2, fontWeight: "bold" }}
                 >
                   {member.name}
                 </Typography>
                 <Typography
                   variant="body2"
-                  sx={{ fontFamily: "'Comfortaa', sans-serif", color: "#6E2E87", mb: 1 }}
+                  sx={{ mb: 1 }}
                 >
                   {member.role}
                 </Typography>
                 <Typography
                   variant="body2"
-                  sx={{ fontFamily: "'Comfortaa', sans-serif", color: "#6E2E87", mb: 1 }}
+                  sx={{ mb: 1 }}
                 >
                   {member.bio}
                 </Typography>
                 <Link href={member.linkedin} target="_blank" rel="noopener noreferrer">
-                  <LinkedInIcon sx={{ color: "#6E2E87" }} />
+                  <LinkedInIcon sx={{ color: theme.palette.text.primary }} />
                 </Link>
               </Box>
             </Paper>
