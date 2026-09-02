@@ -5,14 +5,15 @@ import Contact from "./Contact";
 import { getTheme } from "../theme";
 
 describe("Contact", () => {
-  it("zeigt einen klickbaren mailto-Link", () => {
-    render(
+  it("enthaelt keine elektronische Kontaktadresse", () => {
+    const { container } = render(
       <ThemeProvider theme={getTheme("light")}>
         <Contact />
       </ThemeProvider>
     );
 
-    const emailLink = screen.getByRole("link", { name: "anfrage@uberli.ch" });
-    expect(emailLink).toHaveAttribute("href", "mailto:anfrage@uberli.ch");
+    expect(screen.getByText(/über eine Idee austauschen/i)).toBeInTheDocument();
+    expect(container.querySelector(`a[href^='${"mail"}${"to"}:']`)).not.toBeInTheDocument();
+    expect(container.textContent).not.toMatch(/@/);
   });
 });

@@ -1,277 +1,117 @@
-import { useEffect, useState } from "react";
-import { Box, Button, Paper, Stack, Typography, useMediaQuery } from "@mui/material";
+import { Box, Button, Chip, Grid, Paper, Stack, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import About from "./About";
-import Contact from "./Contact";
-import Projects from "./Projects";
-import Tools from "./Tools";
-
-const circleStyle = (bgColor: string, textColor: string, size: number) => ({
-  width: size,
-  height: size,
-  borderRadius: "50%",
-  backgroundColor: bgColor,
-  color: textColor,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  fontSize: size * 0.6,
-  fontWeight: "bold",
-  fontFamily: "'Comfortaa', sans-serif",
-  margin: 0,
-  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-  transition: "all 0.6s ease"
-});
-
-type CircleRowProps = {
-  letters: string[];
-  bgColors: string[];
-  textColors: string[];
-  size: number;
-};
-
-function CircleRow({ letters, bgColors, textColors, size }: CircleRowProps) {
-  return (
-    <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", position: "relative" }}>
-      {letters.map((char, idx) => (
-        <Box key={char} sx={{ position: "relative", display: "flex", justifyContent: "center" }}>
-          <Box sx={{ ...circleStyle(bgColors[idx], textColors[idx], size), position: "relative", zIndex: 1 }}>{char}</Box>
-        </Box>
-      ))}
-    </Box>
-  );
-}
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import PageMeta from "../components/PageMeta";
 
 export default function Home() {
-  const [active, setActive] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>("");
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const size = isMobile ? 100 : 120;
-
-  const handleActivate = () => {
-    setActive(true);
-  };
-
-  const menuItems = [
-    { label: "Wir & Warum", path: "#about" },
-    { label: "Projekte", path: "#projects" },
-    { label: "Werkzeuge", path: "#tools" },
-    { label: "Kontakt", path: "#contact" },
-  ];
-
-  const divider = (
-    <Box
-      aria-hidden="true"
-      sx={{
-        width: "100%",
-        height: 1,
-        my: 5,
-        background: theme.palette.mode === "dark"
-          ? "linear-gradient(90deg, transparent, rgba(202,190,226,0.55), transparent)"
-          : "linear-gradient(90deg, transparent, rgba(110,46,135,0.28), transparent)",
-      }}
-    />
-  );
-
-  useEffect(() => {
-    const sectionIds = ["about", "projects", "tools", "contact"];
-    const observers: IntersectionObserver[] = [];
-
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveSection(id);
-          }
-        },
-        { threshold: 0.5 }
-      );
-
-      observer.observe(el);
-      observers.push(observer);
-    });
-
-    return () => {
-      observers.forEach((observer) => observer.disconnect());
-    };
-  }, [active]);
+  const cardBaseBg = theme.palette.mode === "dark" ? "#342A4C" : "#FAF3FF";
+  const cardHoverBg = theme.palette.mode === "dark" ? "#3C3057" : "#F5EAFF";
 
   return (
-    <Box
-      sx={{
-        minHeight: "100vh",
-        bgcolor: theme.palette.background.paper,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
-        overflow: "hidden",
-      }}
-    >
-      <Stack
-        sx={{
-          position: "relative",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100vh",
-          maxWidth: "lg",
-          width: "100%",
-          overflow: "hidden",
-        }}
-      >
-        {/* Hintergrund-Rechteck für obere Reihe */}
-        <Box
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: "50%",
-            transform: active ? `translate(-50%, calc(${size / 2}px))` : `translate(-50%, calc(50vh - ${size}px))`,
-            transition: "transform 0.8s ease",
-            width: size * 2,
-            height: size * 0.5,
-            backgroundColor: theme.palette.secondary.main,
-            zIndex: 0,
-            borderRadius: 0
-          }}
-        />
-        <Box
-          onClick={handleActivate}
-          onMouseEnter={() => !active && setActive(true)}
-          sx={{
-            transform: active ? `translateY(calc(-50vh + ${size}px))` : `translateY(-50%)`,
-            transition: "transform 0.8s ease",
-            zIndex: 1
-          }}
-        >
-          <CircleRow
-            letters={["u", "b", "e"]}
-            bgColors={["#ffffff", theme.palette.text.primary, theme.palette.text.primary]}
-            textColors={[theme.palette.text.primary, "#ffffff", "#ffffff"]}
-            size={size}
-          />
-        </Box>
-        <Stack
-          sx={{
-            position: "absolute",
-            top: size,
-            transform: active ? "scaleY(1)" : "scaleY(0)",
-            transformOrigin: "top",
-            transition: "transform 0.8s ease",
-            transitionDelay: active ? "0.8s" : "0s",
-            width: "100%",
-            bgcolor: theme.palette.background.paper,
-            display: "flex",
-            justifyContent: "center",
-            zIndex: 10,
-            py: 2,
-            px: 2,
-            flexDirection: "row",
-            alignItems: "center",
-            gap: 1,
-            overflowX: "auto",
-          }}
-        >
-          {menuItems.map(({ label, path }) => (
-            <Button
-              key={label}
-              href={path}
-              variant="text"
+    <>
+      <PageMeta
+        title="uberli - Ideen, Experimente & Projekte"
+        description="Uberli ist mein persönlicher Raum für Projekte, Experimente und Ideen rund um Technologie, Bildung und KI."
+      />
+      <Box sx={{ width: "100%", py: { xs: 3, sm: 4 } }}>
+        <Grid container spacing={4} alignItems="center">
+          <Grid size={{ xs: 12, md: 7 }}>
+            <Typography variant="h4" sx={{ mb: 2 }}>
+              Ideen, Experimente & Projekte.
+            </Typography>
+            <Typography variant="body1" sx={{ mb: 3, maxWidth: 760 }}>
+              Uberli ist mein persönlicher Raum für Dinge, die ich rund um
+              Technologie, Bildung und KI ausprobiere, baue und weiterdenke.
+            </Typography>
+            <Stack direction="row" spacing={1} useFlexGap flexWrap="wrap" sx={{ mb: 4 }}>
+              {["Technologie", "Lernen", "KI", "Prototypen", "Social Impact"].map((tag) => (
+                <Chip key={tag} label={tag} color="secondary" variant="outlined" />
+              ))}
+            </Stack>
+            <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
+              <Button href="/projekte/" variant="contained" color="secondary" endIcon={<ArrowForwardIcon />}>
+                Projekte ansehen
+              </Button>
+              <Button href="/experimente/" variant="outlined" color="secondary" endIcon={<ArrowForwardIcon />}>
+                Experimente
+              </Button>
+            </Stack>
+          </Grid>
+
+          <Grid size={{ xs: 12, md: 5 }}>
+            <Box
+              component="img"
+              src="/images/uberli.visualisierung.png"
+              alt="Uberli Visualisierung mit Ideen, Experimenten und Projekten"
               sx={{
-                fontFamily: "'Comfortaa', sans-serif",
-                whiteSpace: "nowrap",
-                color: activeSection === path.slice(1) ? "#fff" : theme.palette.text.primary,
-                backgroundColor: activeSection === path.slice(1) ? theme.palette.text.primary : "transparent",
-                mx: 0.25,
-                ":hover": {
-                  bgcolor: theme.palette.text.primary,
-                  color: "white"
-                }
+                width: "100%",
+                maxHeight: { xs: 360, md: 460 },
+                objectFit: "cover",
+                objectPosition: "center 18%",
+                borderRadius: 3,
+                border: "1px solid",
+                borderColor: "divider",
+                boxShadow: theme.palette.mode === "dark"
+                  ? "0 16px 32px rgba(0, 0, 0, 0.35)"
+                  : "0 16px 32px rgba(110, 46, 135, 0.18)",
               }}
-            >
-              {label}
-            </Button>
+            />
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={3} sx={{ mt: { xs: 5, md: 6 } }}>
+          {[
+            {
+              title: "Projekte",
+              description: "YIA, PYU, Futurebooster und Evoxa: die grösseren Vorhaben unter dem Uberli-Dach.",
+              href: "/projekte/",
+            },
+            {
+              title: "Experimente",
+              description: "Kleinere Prototypen, technische Erkundungen und lose Ideen, die weiter wachsen können.",
+              href: "/experimente/",
+            },
+            {
+              title: "Über",
+              description: "Warum Uberli heute mein privater Ort für Lernen, Bauen und Ausprobieren ist.",
+              href: "/ueber/",
+            },
+          ].map(({ title, description, href }) => (
+            <Grid size={{ xs: 12, md: 4 }} key={title}>
+              <Paper
+                elevation={2}
+                sx={{
+                  p: isMobile ? 2.5 : 3,
+                  borderRadius: 4,
+                  height: "100%",
+                  bgcolor: cardBaseBg,
+                  border: "1px solid",
+                  borderColor: "divider",
+                  transition: "transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease",
+                  "&:hover": {
+                    transform: "translateY(-6px)",
+                    bgcolor: cardHoverBg,
+                    borderColor: "secondary.main",
+                    boxShadow: theme.palette.mode === "dark" ? "0 10px 24px rgba(0, 0, 0, 0.35)" : "0 10px 24px rgba(110, 46, 135, 0.18)",
+                  },
+                }}
+              >
+                <Typography variant="h5" sx={{ fontWeight: "bold", mb: 1 }}>
+                  {title}
+                </Typography>
+                <Typography variant="body2" sx={{ mb: 2 }}>
+                  {description}
+                </Typography>
+                <Button href={href} variant="text" color="secondary" endIcon={<ArrowForwardIcon />}>
+                  Öffnen
+                </Button>
+              </Paper>
+            </Grid>
           ))}
-        </Stack>
-        <Paper
-          elevation={3}
-          sx={{
-            position: "absolute",
-            top: `calc(36px + ${size}px)`,
-            bottom: `${size + 8}px`,
-            transform: active ? "scaleY(1)" : "scaleY(0)",
-            transformOrigin: "center",
-            transition: "transform 0.8s ease",
-            left: "0",
-            width: "100%",
-            borderRadius: 3,
-            bgcolor: theme.palette.mode === "dark" ? "#2A2340" : "#FCF8FF",
-            color: theme.palette.text.primary,
-            zIndex: 5,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-            justifyContent: "flex-start",
-            px: isMobile ? 2.5 : 4,
-            py: 3,
-            textAlign: "left",
-            overflowY: "auto"
-          }}
-        >
-          <Typography variant="h4" sx={{ mb: 2, mt: { xs: 3, sm: 4 } }}>
-            Digitale Wirkung mit Haltung.
-          </Typography>
-          <Typography variant="body1" sx={{ mb: 4, maxWidth: 760 }}>
-            Wir unterstützen Bildungsinstitutionen und gemeinnützige Organisationen bei IT, Cloud,
-            Sicherheit und KI. Scrolle durch die Bereiche und entdecke unsere Projekte und Werkzeuge.
-          </Typography>
-
-          <Box sx={{ height: { xs: 20, sm: 28 } }} aria-hidden="true" />
-
-          <About />
-          {divider}
-          <Projects />
-          {divider}
-          <Tools />
-          {divider}
-          <Contact />
-        </Paper>
-        {/* Hintergrund-Rechteck für untere Reihe */}
-        <Box
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: "50%",
-            transform: active ? `translate(-50%, calc(100vh - ${size}px))` : `translate(-50%, calc(50vh - ${size / 2}px))`,
-            transition: "transform 0.8s ease",
-            width: size * 2,
-            height: size * 0.5,
-            backgroundColor: theme.palette.secondary.main,
-            zIndex: 0,
-            borderRadius: 0
-          }}
-        />
-
-        <Box
-          sx={{
-            transform: active ? `translateY(calc(50vh - ${size}px))` : `translateY(-50%)`,
-            transition: "transform 0.8s ease",
-            zIndex: 1
-          }}
-        >
-          <CircleRow
-            letters={["r", "l", "i"]}
-            bgColors={[theme.palette.text.primary, theme.palette.text.primary, "#ffffff"]}
-            textColors={["#ffffff", "#ffffff", theme.palette.text.primary]}
-            size={size}
-          />
-        </Box>
-      </Stack>
-    </Box>
+        </Grid>
+      </Box>
+    </>
   );
 }

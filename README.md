@@ -1,6 +1,6 @@
 # uberli-site
 
-Marketing- und Beratungswebsite für uberli, umgesetzt mit React, TypeScript, Material UI und Vite.
+Persönliche Projekt- und Experimentierwebsite für uberli, umgesetzt mit React, TypeScript, Material UI und Vite.
 
 ## Stack
 
@@ -79,15 +79,15 @@ Führt die Unit-Tests mit Vitest aus.
 
 ## Seitenstruktur
 
-Die Website nutzt echte Routen statt einer einzelnen Scroll-Seite:
+Die Website nutzt eine kurze Startseite und einzelne Seiten mit eigenen URLs:
 
 - /
-- /about
-- /projects
-- /tools
-- /contact
+- /projekte/
+- /experimente/
+- /ueber/
+- /kontakt/
 
-Die Seiten werden lazy geladen, damit der Initial-Load kleiner bleibt.
+Die Seiten werden lazy geladen und im gemeinsamen Uberli-Rahmen gerendert.
 
 ## Design-System
 

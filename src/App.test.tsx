@@ -17,12 +17,21 @@ describe("App Routing und Dark Mode", () => {
     expect(localStorage.getItem("uberli-color-mode")).toBe("dark");
   });
 
-  it("rendert die Singlepage-Inhalte", async () => {
+  it("rendert die Startseite mit Seitenlinks", async () => {
     render(<App />);
 
-    fireEvent.click(await screen.findByText("u"));
+    expect(await screen.findByRole("heading", { name: "Ideen, Experimente & Projekte." })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Projekte" })).toHaveAttribute("href", "/projekte/");
+    expect(screen.getByRole("link", { name: "Kontakt" })).toHaveAttribute("href", "/kontakt/");
+  });
 
-    expect(await screen.findByRole("heading", { name: "Digitale Wirkung mit Haltung." })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Kontakt aufnehmen" })).toBeInTheDocument();
+  it("rendert eine direkte Projektseite", async () => {
+    window.history.pushState({}, "", "/projekte/");
+
+    render(<App />);
+
+    expect(await screen.findByRole("heading", { name: "Projekte" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "YIA – Youth Intelligence Agency" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Futurebooster" })).toBeInTheDocument();
   });
 });
