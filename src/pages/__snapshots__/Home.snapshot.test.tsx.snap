@@ -75,6 +75,7 @@ exports[`Home Snapshot > rendert konsistent im Light Mode 1`] = `
         >
           <a
             class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorSecondary MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorSecondary css-yd410n-MuiButtonBase-root-MuiButton-root"
+            data-discover="true"
             href="/projekte/"
             tabindex="0"
           >
@@ -97,6 +98,7 @@ exports[`Home Snapshot > rendert konsistent im Light Mode 1`] = `
           </a>
           <a
             class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorSecondary MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorSecondary css-2tgfez-MuiButtonBase-root-MuiButton-root"
+            data-discover="true"
             href="/experimente/"
             tabindex="0"
           >
@@ -151,6 +153,7 @@ exports[`Home Snapshot > rendert konsistent im Light Mode 1`] = `
           </p>
           <a
             class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorSecondary MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorSecondary css-wcc4w9-MuiButtonBase-root-MuiButton-root"
+            data-discover="true"
             href="/projekte/"
             tabindex="0"
           >
@@ -192,6 +195,7 @@ exports[`Home Snapshot > rendert konsistent im Light Mode 1`] = `
           </p>
           <a
             class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorSecondary MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorSecondary css-wcc4w9-MuiButtonBase-root-MuiButton-root"
+            data-discover="true"
             href="/experimente/"
             tabindex="0"
           >
@@ -233,6 +237,7 @@ exports[`Home Snapshot > rendert konsistent im Light Mode 1`] = `
           </p>
           <a
             class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorSecondary MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorSecondary css-wcc4w9-MuiButtonBase-root-MuiButton-root"
+            data-discover="true"
             href="/ueber/"
             tabindex="0"
           >

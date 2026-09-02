@@ -1,7 +1,7 @@
 import { type ReactNode, useEffect, useState } from "react";
 import { Box, Button, Paper, Stack, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { useLocation } from "react-router-dom";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 
 const circleStyle = (bgColor: string, textColor: string, size: number) => ({
   width: size,
@@ -43,6 +43,24 @@ const normalizePath = (path: string) => {
   return path.replace(/\/$/, "");
 };
 
+const logoAnimationKey = "uberli-logo-animation-complete";
+
+const hasLogoAnimationPlayed = () => {
+  try {
+    return sessionStorage.getItem(logoAnimationKey) === "true";
+  } catch {
+    return false;
+  }
+};
+
+const rememberLogoAnimation = () => {
+  try {
+    sessionStorage.setItem(logoAnimationKey, "true");
+  } catch {
+    // If sessionStorage is unavailable, route changes still keep this frame mounted.
+  }
+};
+
 function CircleRow({ letters, bgColors, textColors, size }: CircleRowProps) {
   return (
     <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", position: "relative" }}>
@@ -58,7 +76,7 @@ function CircleRow({ letters, bgColors, textColors, size }: CircleRowProps) {
 }
 
 export default function UberliFrame({ children }: { children: ReactNode }) {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(hasLogoAnimationPlayed);
   const theme = useTheme();
   const location = useLocation();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -67,9 +85,17 @@ export default function UberliFrame({ children }: { children: ReactNode }) {
   const activePath = normalizePath(location.pathname);
 
   useEffect(() => {
-    const timer = setTimeout(() => setActive(true), 350);
+    if (active) {
+      return undefined;
+    }
+
+    const timer = setTimeout(() => {
+      setActive(true);
+      rememberLogoAnimation();
+    }, 350);
+
     return () => clearTimeout(timer);
-  }, []);
+  }, [active]);
 
   return (
     <Box
@@ -155,7 +181,8 @@ export default function UberliFrame({ children }: { children: ReactNode }) {
             return (
               <Button
                 key={label}
-                href={path}
+                component={RouterLink}
+                to={path}
                 variant="text"
                 aria-current={isActive ? "page" : undefined}
                 sx={{

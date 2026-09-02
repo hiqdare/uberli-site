@@ -1,6 +1,7 @@
 import { Box, Button, Chip, Grid, Paper, Stack, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { Link as RouterLink } from "react-router-dom";
 import PageMeta from "../components/PageMeta";
 
 export default function Home() {
@@ -31,10 +32,10 @@ export default function Home() {
               ))}
             </Stack>
             <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
-              <Button href="/projekte/" variant="contained" color="secondary" endIcon={<ArrowForwardIcon />}>
+              <Button component={RouterLink} to="/projekte/" variant="contained" color="secondary" endIcon={<ArrowForwardIcon />}>
                 Projekte ansehen
               </Button>
-              <Button href="/experimente/" variant="outlined" color="secondary" endIcon={<ArrowForwardIcon />}>
+              <Button component={RouterLink} to="/experimente/" variant="outlined" color="secondary" endIcon={<ArrowForwardIcon />}>
                 Experimente
               </Button>
             </Stack>
@@ -104,7 +105,7 @@ export default function Home() {
                 <Typography variant="body2" sx={{ mb: 2 }}>
                   {description}
                 </Typography>
-                <Button href={href} variant="text" color="secondary" endIcon={<ArrowForwardIcon />}>
+                <Button component={RouterLink} to={href} variant="text" color="secondary" endIcon={<ArrowForwardIcon />}>
                   Öffnen
                 </Button>
               </Paper>
