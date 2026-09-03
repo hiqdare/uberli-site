@@ -74,7 +74,7 @@ exports[`Home Snapshot > rendert konsistent im Light Mode 1`] = `
           class="MuiStack-root css-10svwat-MuiStack-root"
         >
           <a
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorSecondary MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorSecondary css-yd410n-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorSecondary css-yd410n-MuiButtonBase-root-MuiButton-root"
             data-discover="true"
             href="/projekte/"
             tabindex="0"
@@ -97,7 +97,7 @@ exports[`Home Snapshot > rendert konsistent im Light Mode 1`] = `
             </span>
           </a>
           <a
-            class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorSecondary MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorSecondary css-2tgfez-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButton-colorSecondary css-2tgfez-MuiButtonBase-root-MuiButton-root"
             data-discover="true"
             href="/experimente/"
             tabindex="0"
@@ -152,7 +152,7 @@ exports[`Home Snapshot > rendert konsistent im Light Mode 1`] = `
             YIA, PYU, Futurebooster und Evoxa: die grösseren Vorhaben unter dem Uberli-Dach.
           </p>
           <a
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorSecondary MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorSecondary css-wcc4w9-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorSecondary css-wcc4w9-MuiButtonBase-root-MuiButton-root"
             data-discover="true"
             href="/projekte/"
             tabindex="0"
@@ -194,7 +194,7 @@ exports[`Home Snapshot > rendert konsistent im Light Mode 1`] = `
             Kleinere Prototypen, technische Erkundungen und lose Ideen, die weiter wachsen können.
           </p>
           <a
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorSecondary MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorSecondary css-wcc4w9-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorSecondary css-wcc4w9-MuiButtonBase-root-MuiButton-root"
             data-discover="true"
             href="/experimente/"
             tabindex="0"
@@ -236,7 +236,7 @@ exports[`Home Snapshot > rendert konsistent im Light Mode 1`] = `
             Warum Uberli heute mein privater Ort für Lernen, Bauen und Ausprobieren ist.
           </p>
           <a
-            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorSecondary MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorSecondary css-wcc4w9-MuiButtonBase-root-MuiButton-root"
+            class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorSecondary css-wcc4w9-MuiButtonBase-root-MuiButton-root"
             data-discover="true"
             href="/ueber/"
             tabindex="0"
