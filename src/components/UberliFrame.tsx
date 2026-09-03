@@ -1,5 +1,5 @@
-import { type ReactNode, useEffect, useState } from "react";
-import { Box, Button, Paper, Stack, Typography, useMediaQuery } from "@mui/material";
+import { type ReactNode, useState } from "react";
+import { Box, Button, ButtonBase, Paper, Stack, Typography, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 
@@ -43,24 +43,6 @@ const normalizePath = (path: string) => {
   return path.replace(/\/$/, "");
 };
 
-const logoAnimationKey = "uberli-logo-animation-complete";
-
-const hasLogoAnimationPlayed = () => {
-  try {
-    return sessionStorage.getItem(logoAnimationKey) === "true";
-  } catch {
-    return false;
-  }
-};
-
-const rememberLogoAnimation = () => {
-  try {
-    sessionStorage.setItem(logoAnimationKey, "true");
-  } catch {
-    // If sessionStorage is unavailable, route changes still keep this frame mounted.
-  }
-};
-
 function CircleRow({ letters, bgColors, textColors, size }: CircleRowProps) {
   return (
     <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", position: "relative" }}>
@@ -76,26 +58,13 @@ function CircleRow({ letters, bgColors, textColors, size }: CircleRowProps) {
 }
 
 export default function UberliFrame({ children }: { children: ReactNode }) {
-  const [active, setActive] = useState(hasLogoAnimationPlayed);
+  const [active, setActive] = useState(false);
   const theme = useTheme();
   const location = useLocation();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const size = isMobile ? 100 : 120;
   const logoGap = isMobile ? 16 : 24;
   const activePath = normalizePath(location.pathname);
-
-  useEffect(() => {
-    if (active) {
-      return undefined;
-    }
-
-    const timer = setTimeout(() => {
-      setActive(true);
-      rememberLogoAnimation();
-    }, 350);
-
-    return () => clearTimeout(timer);
-  }, [active]);
 
   return (
     <Box
@@ -155,24 +124,30 @@ export default function UberliFrame({ children }: { children: ReactNode }) {
         <Stack
           component="nav"
           aria-label="Hauptnavigation"
+          aria-hidden={!active}
           sx={{
             position: "absolute",
             top: size,
-            transform: active ? "scaleY(1)" : "scaleY(0)",
-            transformOrigin: "top",
+            left: "50%",
+            transform: active ? "translateX(-50%) scaleY(1)" : "translateX(-50%) scaleY(0)",
+            transformOrigin: "top center",
             transition: "transform 0.8s ease",
             transitionDelay: active ? "0.8s" : "0s",
-            width: "100%",
-            bgcolor: theme.palette.background.paper,
+            width: { xs: "calc(100% - 32px)", sm: "auto" },
+            maxWidth: "calc(100% - 32px)",
+            visibility: active ? "visible" : "hidden",
             display: "flex",
             justifyContent: { xs: "flex-start", sm: "center" },
             zIndex: 10,
             py: 2,
-            px: 2,
             flexDirection: "row",
             alignItems: "center",
-            gap: 1,
+            gap: 0.75,
             overflowX: "auto",
+            scrollbarWidth: "none",
+            "&::-webkit-scrollbar": {
+              display: "none",
+            },
           }}
         >
           {navItems.map(({ label, path }) => {
@@ -189,13 +164,31 @@ export default function UberliFrame({ children }: { children: ReactNode }) {
                   fontFamily: "'Comfortaa', sans-serif",
                   whiteSpace: "nowrap",
                   flexShrink: 0,
-                  minWidth: "auto",
-                  px: 1.5,
+                  width: { xs: 108, sm: 116 },
+                  minWidth: { xs: 108, sm: 116 },
+                  height: 38,
+                  px: 1.25,
+                  border: "1px solid",
+                  borderColor: isActive
+                    ? theme.palette.text.primary
+                    : theme.palette.mode === "dark"
+                      ? "rgba(202, 190, 226, 0.36)"
+                      : "rgba(110, 46, 135, 0.34)",
+                  borderRadius: "18px",
                   color: isActive ? "#fff" : theme.palette.text.primary,
-                  backgroundColor: isActive ? theme.palette.text.primary : "transparent",
-                  mx: 0.25,
+                  backgroundColor: isActive
+                    ? theme.palette.text.primary
+                    : theme.palette.mode === "dark"
+                      ? "#2A2340"
+                      : "#FCF8FF",
+                  boxShadow: isActive
+                    ? theme.palette.mode === "dark"
+                      ? "0 8px 18px rgba(0, 0, 0, 0.24)"
+                      : "0 8px 18px rgba(110, 46, 135, 0.16)"
+                    : "none",
                   ":hover": {
                     bgcolor: theme.palette.text.primary,
+                    borderColor: theme.palette.text.primary,
                     color: "white",
                   },
                 }}
@@ -208,6 +201,7 @@ export default function UberliFrame({ children }: { children: ReactNode }) {
 
         <Paper
           component="main"
+          aria-hidden={!active}
           elevation={3}
           sx={{
             position: "absolute",
@@ -219,6 +213,7 @@ export default function UberliFrame({ children }: { children: ReactNode }) {
             left: 0,
             width: "100%",
             borderRadius: 3,
+            visibility: active ? "visible" : "hidden",
             bgcolor: theme.palette.mode === "dark" ? "#2A2340" : "#FCF8FF",
             color: theme.palette.text.primary,
             zIndex: 5,
@@ -244,7 +239,7 @@ export default function UberliFrame({ children }: { children: ReactNode }) {
             }}
           >
             <Typography variant="caption" sx={{ fontFamily: "'Comfortaa', sans-serif" }}>
-              uberli · persönliche Projekte & Experimente · privat und nicht-kommerziell
+              uberli · persönliche Projekte & Experimente
             </Typography>
           </Box>
         </Paper>
@@ -278,6 +273,29 @@ export default function UberliFrame({ children }: { children: ReactNode }) {
             size={size}
           />
         </Box>
+
+        {!active ? (
+          <ButtonBase
+            aria-label="Uberli öffnen"
+            onClick={() => setActive(true)}
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: size * 3,
+              height: size * 2,
+              borderRadius: `${size}px`,
+              zIndex: 20,
+              cursor: "pointer",
+              "&:focus-visible": {
+                outline: "3px solid",
+                outlineColor: theme.palette.primary.main,
+                outlineOffset: 8,
+              },
+            }}
+          />
+        ) : null}
       </Stack>
     </Box>
   );

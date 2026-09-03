@@ -5,7 +5,6 @@ import App from "./App";
 describe("App Routing und Dark Mode", () => {
   beforeEach(() => {
     localStorage.clear();
-    sessionStorage.clear();
     window.history.pushState({}, "", "/");
   });
 
@@ -21,6 +20,11 @@ describe("App Routing und Dark Mode", () => {
   it("rendert die Startseite mit Seitenlinks", async () => {
     render(<App />);
 
+    expect(screen.getByRole("button", { name: "Uberli öffnen" })).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "Ideen, Experimente & Projekte." })).not.toBeInTheDocument();
+
+    fireEvent.click(await screen.findByRole("button", { name: "Uberli öffnen" }));
+
     expect(await screen.findByRole("heading", { name: "Ideen, Experimente & Projekte." })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Projekte" })).toHaveAttribute("href", "/projekte/");
     expect(screen.getByRole("link", { name: "Kontakt" })).toHaveAttribute("href", "/kontakt/");
@@ -31,6 +35,8 @@ describe("App Routing und Dark Mode", () => {
 
     render(<App />);
 
+    fireEvent.click(await screen.findByRole("button", { name: "Uberli öffnen" }));
+
     expect(await screen.findByRole("heading", { name: "Projekte" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "YIA – Youth Intelligence Agency" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Futurebooster" })).toBeInTheDocument();
@@ -39,6 +45,7 @@ describe("App Routing und Dark Mode", () => {
   it("wechselt per Navigation nur den Seiteninhalt", async () => {
     render(<App />);
 
+    fireEvent.click(await screen.findByRole("button", { name: "Uberli öffnen" }));
     fireEvent.click(await screen.findByRole("link", { name: "Projekte" }));
 
     expect(window.location.pathname).toBe("/projekte/");
